@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   wrapperTitleItem: {
     backgroundColor: Colors.C3F86FA,
     height: 93,
-    paddingTop: 27,
+    paddingTop: 23,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     alignItems: 'center',

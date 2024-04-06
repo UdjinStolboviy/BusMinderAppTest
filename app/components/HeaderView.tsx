@@ -103,6 +103,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.C3F86FA,
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
+    paddingTop: 12,
+    paddingBottom: 12,
     justifyContent: 'center',
     height: 47,
   },

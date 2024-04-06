@@ -17,6 +17,23 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Turning on location services allows us to show you the best places nearby.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Turning on location services allows us to show you the best places nearby.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>

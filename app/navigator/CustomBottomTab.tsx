@@ -9,6 +9,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs/lib/typescript/src/types';
+import {BusIcon} from '../../assets/icons/BusIcon';
+import {MapIcon} from '../../assets/icons/MapIcon';
+import {InfoIcon} from '../../assets/icons/InfoIcon';
+import {Colors} from '../../assets/constants/colors';
 
 const CustomBottomTab = ({
   state,
@@ -18,12 +22,10 @@ const CustomBottomTab = ({
   const {width} = useWindowDimensions();
 
   return (
-    <View style={[styles.tabBarContainer, {width: 40, bottom: 10}]}>
-      {state.routes.slice(0, 5).map((route, index) => {
+    <View style={[styles.tabBarContainer, {width: width, bottom: 10}]}>
+      {state.routes.slice(0, 3).map((route, index) => {
         const {options} = descriptors[route.key];
-
         const isFocused = state.index === index;
-
         const onPress = () => {
           const event = navigation.emit({
             type: 'tabPress',
@@ -32,15 +34,22 @@ const CustomBottomTab = ({
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name, {merge: true});
+            navigation.navigate(route.name);
           }
         };
 
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
+        const iconTab = (index: number) => {
+          switch (index) {
+            case 0:
+              return <BusIcon />;
+            case 1:
+              return <MapIcon />;
+            case 2:
+              return <InfoIcon />;
+
+            default:
+              return null;
+          }
         };
 
         return (
@@ -51,11 +60,8 @@ const CustomBottomTab = ({
             accessibilityLabel={options.tabBarAccessibilityLabel}
             testID={options.tabBarTestID}
             onPress={onPress}
-            onLongPress={onLongPress}
             style={{flex: 1}}>
-            <View style={styles.contentContainer}>
-              <Text>route.key</Text>
-            </View>
+            <View style={styles.contentContainer}>{iconTab(index)}</View>
           </Pressable>
         );
       })}
@@ -69,13 +75,13 @@ const styles = StyleSheet.create({
   tabBarContainer: {
     flex: 1,
     flexDirection: 'row',
-    height: 64,
+    height: 81,
+    backgroundColor: Colors.CFFFFFF,
     position: 'absolute',
     alignSelf: 'center',
-    borderRadius: 100,
+    marginBottom: Platform.OS == 'ios' ? -10 : 0,
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginBottom: 15,
   },
   slidingTabContainer: {
     ...StyleSheet.absoluteFillObject,

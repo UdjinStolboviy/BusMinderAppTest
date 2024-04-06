@@ -2,16 +2,15 @@ import React from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
-import {mapStyle} from '../assets/mapStyle';
+import {mapStyle} from '../../assets/mapStyle';
 import {useAppContext} from '../contexts';
+import {Colors} from '../../assets/constants/colors';
 
 export default function MapInfo() {
   const appContext = useAppContext();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Around you</Text>
-
       <View style={styles.mapContainer}>
         {appContext?.location && (
           <MapView
@@ -35,16 +34,15 @@ export default function MapInfo() {
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  title: {
-    fontSize: 22,
-    fontWeight: '600',
-    color: '#000',
+  container: {
+    marginTop: 80,
+    width: '100%',
+    height: '80%',
   },
+
   mapContainer: {
-    backgroundColor: '#dde2e3',
-    height: 200,
-    marginVertical: 20,
+    backgroundColor: Colors.CFFFFFF,
+    flex: 1,
   },
   map: {
     ...StyleSheet.absoluteFillObject,

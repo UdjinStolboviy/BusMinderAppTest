@@ -5,15 +5,14 @@ import {
   Platform,
   StyleSheet,
   SafeAreaView,
-  Dimensions,
 } from 'react-native';
+import {Colors} from '../../assets/constants/colors';
 
 interface IScreenViewProps {
   children: ReactNode;
 }
 
 export const ScreenView: React.FC<IScreenViewProps> = ({children}) => {
-  const SCREEN_WIDTH = Dimensions.get('window').width;
   return (
     <View style={[styles.container]}>
       <StatusBar
@@ -22,24 +21,13 @@ export const ScreenView: React.FC<IScreenViewProps> = ({children}) => {
         barStyle={'light-content'}
       />
       {Platform.OS === 'ios' ? (
-        <SafeAreaView
-          style={[
-            {
-              backgroundColor: '#fff',
-              flex: 1,
-              width: SCREEN_WIDTH,
-            },
-          ]}>
-          {children}
-        </SafeAreaView>
+        <SafeAreaView style={styles.container}>{children}</SafeAreaView>
       ) : (
         <View
           style={[
             {
-              backgroundColor: '#fff',
               flex: 1,
               marginTop: StatusBar.currentHeight,
-              width: SCREEN_WIDTH,
             },
           ]}>
           {children}
@@ -52,5 +40,6 @@ export const ScreenView: React.FC<IScreenViewProps> = ({children}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Colors.CE8EEF1,
   },
 });

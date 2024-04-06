@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.CFFFFFF,
     position: 'absolute',
     alignSelf: 'center',
-    marginBottom: Platform.OS == 'ios' ? -10 : 0,
+    marginBottom: -10,
     alignItems: 'center',
     justifyContent: 'space-around',
   },

@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     fontFamily: Fonts.POPPINS,
+    color: Colors.C000000,
     fontWeight: '500',
     fontSize: 26,
     marginBottom: 30,

@@ -18,49 +18,38 @@ export const TicketsScreen: React.FC = () => {
   const onPressItem = () => {
     navigation.navigate(NavigatorConstants.MAP_SCREEN);
   };
+
+  const itemSeat = (seat: string, index: number) => {
+    return (
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => onPressItem()}
+        key={index}
+        style={[
+          styles.item,
+          {
+            backgroundColor:
+              seat === 'reserved' ? Colors.CABCBFF : Colors.CFFFFFF,
+          },
+        ]}>
+        <Text style={styles.textSeat}>{index + 1}</Text>
+      </TouchableOpacity>
+    );
+  };
   const twoColumnComponent = (seats: string[]) => {
     return (
       <View style={styles.wrapperSeat}>
         <View style={styles.column}>
           {seats.map((item, index) => {
             if (index % 2 === 0) {
-              return (
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={() => onPressItem()}
-                  key={index}
-                  style={[
-                    styles.item,
-                    {
-                      backgroundColor:
-                        item === 'reserved' ? Colors.CABCBFF : Colors.CFFFFFF,
-                    },
-                  ]}>
-                  <Text style={styles.textSeat}>{index + 1}</Text>
-                </TouchableOpacity>
-              );
+              return itemSeat(item, index);
             }
           })}
         </View>
-        <View style={styles.column}>
+        <View style={[styles.column, {marginLeft: 15}]}>
           {seats.map((item, index) => {
             if (index % 2 !== 0) {
-              return (
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={() => onPressItem()}
-                  key={index}
-                  style={[
-                    styles.item,
-                    {
-                      marginLeft: 15,
-                      backgroundColor:
-                        item === 'reserved' ? Colors.CABCBFF : Colors.CFFFFFF,
-                    },
-                  ]}>
-                  <Text style={styles.textSeat}>{index + 1}</Text>
-                </TouchableOpacity>
-              );
+              return itemSeat(item, index);
             }
           })}
         </View>

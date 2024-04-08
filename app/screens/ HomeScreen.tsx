@@ -60,7 +60,6 @@ export const HomeScreen = (props: HomeScreenProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 30,
     alignItems: 'center',
     marginBottom: Platform.OS === 'ios' ? -35 : 0,
   },
@@ -93,7 +92,15 @@ const styles = StyleSheet.create({
   containerItem: {
     width: 271,
     height: 340,
-
+    marginHorizontal: 10,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    elevation: 7,
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    shadowColor: Colors.C000000,
     marginBottom: 25,
     borderRadius: 20,
     backgroundColor: Colors.CFFFFFF,
